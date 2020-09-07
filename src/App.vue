@@ -22,11 +22,20 @@ export default {
         };
     },
     created: function () {
-        axios
-            .get(" https://pokeapi.co/api/v2/pokemon?limit=721&offset=0")
-            .then((resp) => {
-                this.pokemons = resp.data.results;
-            });
+        let storagedPokemons = localStorage.getItem('@pokedex:pokemons');
+
+        if (storagedPokemons) {
+
+            this.pokemons = JSON.parse(storagedPokemons)
+        } else {
+
+            axios
+                .get(" https://pokeapi.co/api/v2/pokemon?limit=721&offset=0")
+                .then((resp) => {
+                    this.pokemons = resp.data.results;
+                    localStorage.setItem('@pokedex:pokemons', JSON.stringify(resp.data.results));
+                });
+        }
     },
     components: {
         Pokemon,

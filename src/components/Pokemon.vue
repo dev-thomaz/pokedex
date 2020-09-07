@@ -39,6 +39,7 @@ export default {
             name = name.replace("meowstic_male", 'meowstic')
             name = name.replace("aegislash_shield", 'aegislash')
             name = name.replace("pumpkaboo_average", 'pumpkaboo')
+            name = name.replace("gourgeist-average_average", 'gourgeist')
             this.pokemon.sprite = `https://www.pkparaiso.com/imagenes/xy/sprites/animados/${name}.gif`;
             console.log(this.pokemon);
         });
